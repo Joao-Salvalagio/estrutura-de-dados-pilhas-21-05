@@ -20,16 +20,28 @@ bool estaVazia(Pilha *pilha){
 }
 
 void empilhar(int dado, Pilha *pilha){
-    No *no = (No *) malloc(sizeof(No));
+    No *novo =(No *)malloc(sizeof(No));
     novo->dado = dado;
     novo->proximo = pilha->topo;
     pilha->topo = novo;
+}
+
+void imprimir(Pilha *pilha){
+    No *atual = pilha->topo;
+    while (atual->proximo != NULL){
+        printf("%d", atual->dado);
+        atual = atual->proximo;
+        printf("\n");
+    }
+    
 }
 
 int main(){
 
     Pilha p1;
     inicializar(&p1);
+
+    empilhar(5, &p1);
 
     if(estaVazia(&p1)){
         printf("Pilha vazia\n");
